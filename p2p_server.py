@@ -7,7 +7,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setblocking(0)
 
 # Bind the socket to the port
-server_address = ('', 80)
+server_address = ('', 12000)
 print >>sys.stderr, 'starting up on %s port %s' % server_address
 server.bind(server_address)
 
@@ -203,7 +203,11 @@ def HServer():
                                     print 'socket yok'
                             else:
                                 print 'message coming to server'
-                                print packet
+                                packet = {'from': next_msg['from'], 'request': next_msg['request'],
+                                               'request_args': next_msg['request_args'], 'status': next_msg['status']}
+                                # Encode proces
+                                print huffman_encode(packet['request_args'])
+
                         else:
                             print 'user yok'
                     except Exception,e:

@@ -121,8 +121,14 @@ def HServer():
                                     if username_to_fd[k] == fd:
                                         username = k
                                 # user2 yukaridaki paketi alir ve  user 1 file'i gonderir
-                                message = {'request': data['request'], 'from': username, 'to': data['request_args'],
-                                           'status': '', 'request_args': data['file'] }
+                                if data['request_args'] == 'p2p_server':
+                                    file = huffman_decode(data['file']['compressed_text'],data['file']['codebook'] )
+
+                                    message = {'request': data['request'], 'from': username, 'to': data['request_args'],
+                                               'status': '', 'request_args': file }
+                                else:
+                                    message = {'request': data['request'], 'from': username, 'to': data['request_args'],
+                                               'status': '', 'request_args': data['file'] }
 
                                 print >> sys.stderr, 'received "%s" from %s' % (data, s.getpeername())
                                 message_queues[s].put(message)
@@ -184,16 +190,20 @@ def HServer():
                         to_user = username_to_fd[next_msg['to']]
                         print to_user
                         if to_user:
-                            socsoc = fd_to_socket[to_user]
-                            print socsoc
-                            if socsoc:
-                                packet = {'from': next_msg['from'], 'request': next_msg['request'],
-                                           'request_args': next_msg['request_args'], 'status': next_msg['status']}
+                            if to_user != 'p2p_user':
+                                socsoc = fd_to_socket[to_user]
+                                print socsoc
+                                if socsoc:
+                                    packet = {'from': next_msg['from'], 'request': next_msg['request'],
+                                               'request_args': next_msg['request_args'], 'status': next_msg['status']}
 
-                                print str(packet) + ' gonderilen packet'
-                                socsoc.send(str(packet))
+                                    print str(packet) + ' gonderilen packet'
+                                    socsoc.send(str(packet))
+                                else:
+                                    print 'socket yok'
                             else:
-                                print 'socket yok'
+                                print 'message coming to server'
+                                print packet
                         else:
                             print 'user yok'
                     except Exception,e:

@@ -141,6 +141,35 @@ public class HuffmanCode {
         
     }
     
+    public static void HuffmanDecompress(String encodedString, HuffmanNode node) {
+        
+        StringBuilder decodedString = new StringBuilder();
+        
+        HuffmanNode base = node;
+        
+        while (!encodedString.isEmpty()){
+            if (encodedString.charAt(0) == '0'){
+                base = base.left;
+                encodedString = encodedString.removeFirstChar;
+            } else {
+                base = base.right;
+                encodedString = encodedString.removeFirstChar;
+            }
+            
+            if (base.left == null && base.right == null){
+                decodedString.append(base.data);
+                base = node;
+            }
+            
+        }
+        
+        System.out.println(decodedString.toString());
+    }
+    
+    public String removeFirstChar(String s){
+        return s.substring(1);
+    }
+    
     
     public static void main(String[] args) {
         String test = "this is an example for huffman encoding";

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/username_EditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_username"
+            android:paddingRight="100dp"
+            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/login_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="LOGIN"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/titles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="100dp">
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/username_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt"
+                android:textStyle="bold"
+
+                android:textColor="@color/colorPrimary"
+                android:text="Username :">
+            </TextView>
+
+            <TextView
+                android:id="@+id/filename_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt"
+                android:textStyle="bold"
+
+                android:textColor="@color/colorPrimary"
+                android:text="Filename   :">
+            </TextView>
+
+            <TextView
+                android:id="@+id/recepient_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+
+                android:text="Recepient :">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/current_username_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt">
+            </TextView>
+
+            <TextView
+                android:id="@+id/current_filename_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt">
+            </TextView>
+
+            <TextView
+                android:id="@+id/current_recepient_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="8pt">
+            </TextView>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/recepient_name_edit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titles"
+        android:visibility="invisible"
+        >
+    </EditText>
+    <Button
+        android:id="@+id/recepient_name_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="SELECT USER"
+        android:visibility="invisible"
+        android:layout_below="@id/recepient_name_edit"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
+        >
+    </Button>
+    <Button
+        android:id="@+id/file_receive_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ACCEPT"
+        android:visibility="invisible"
+        android:layout_below="@id/recepient_name_send"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white">
+    </Button>
+
+    <Button
+        android:id="@+id/file_receive_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="REJECT"
+        android:visibility="invisible"
+        android:layout_below="@id/file_receive_accept"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white">
+    </Button>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/file_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:onClick="file_choose"
+            android:text="SELECT FILE"
+
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white">
+        </Button>
+
+        <Button
+            android:id="@+id/select_user_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+
+            android:text="USERS"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white">
+        </Button>
+
+        <Button
+            android:id="@+id/sendto_user_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+
+            android:text="SEND"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white">
+        </Button>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@id/buttons"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/send_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        </TextView>
+
+        <TextView
+            android:id="@+id/received_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        </TextView>
+
+    </LinearLayout>
+
+</RelativeLayout>

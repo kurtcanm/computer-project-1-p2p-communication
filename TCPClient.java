@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class TCPClient {
     public static final String SERVER_IP = "160.75.6.107";
-    public static final int SERVER_PORT = 12000;
+    public static final int SERVER_PORT = 80;
 
     private String mServerMessage;
     private OnMessageReceived mMessageListener = null;
